@@ -7,6 +7,7 @@ amount = 0
 new_bal = bal-amount
 
 # function to welcome users and also ask what they will like to todo#
+
 def welcome():
 
     print("Welcome Stranger")
@@ -22,6 +23,7 @@ def welcome():
         print(" Invalid Entry")
 
 #function to send money and details of the reciever
+
 def to_do():
     Rname = input("What is the name of your Reciever ? ")
     acct = input("Account Number if your receiver? ")
