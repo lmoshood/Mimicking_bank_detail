@@ -1,10 +1,12 @@
+# Creating global variables to be used within the code#
+
 todo = "send"
 check_balance = "balance"
 bal = 5000
 amount = 0
 new_bal = bal-amount
 
-
+# function to welcome users and also ask what they will like to todo#
 def welcome():
 
     print("Welcome Stranger")
@@ -12,14 +14,14 @@ def welcome():
     print(" Alright " + username +" it is ")
     print(username + " Your account Remaing is " + str(bal))
     action=input(" What can i do for you today ? ")
-    if action == todo :
+    if action == todo : # a conditional statemnet to help decide which action suite them the most
         to_do()
     elif action == check_balance:
         check_bal()
     else:
         print(" Invalid Entry")
 
-
+#function to send money and details of the reciever
 def to_do():
     Rname = input("What is the name of your Reciever ? ")
     acct = input("Account Number if your receiver? ")
@@ -38,4 +40,4 @@ def check_bal():
     print(new_bal)
 
 
-welcome()
+welcome() #running the code
