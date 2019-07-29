@@ -1,4 +1,6 @@
-database = ['admin', 'admin']
+
+
+database = ''
 bal_database= []
 from random import randint
 import time
@@ -21,21 +23,34 @@ class SavingsAcct():
 
     def reg(self, intialDeposit, amount_with):
         print('Create your account below')
-        reg_username = input('Enter your desire Username: ')
-        database.append(reg_username)
-        reg_pass1 = input('Enter password: ')
-        database.append(reg_pass1)
-        reg_pass2 = input('Confirm Password: ')
-        if reg_pass1 != reg_pass2:
-            print('Password dont Match')
-            return self.reg(SavingsAcct,intialDeposit, amount_with)
+        reg_username = input('Please Enter your desired Four Letter Username: ')
+        while len(reg_username) == 4:
+            database = open('database.txt', 'a')
+            database.write(str(reg_username)+'\n')
+            database.close()
+            reg_pass1 = input('Enter password: ')
+            database = open('database.txt', 'a')
+            database.write(str(reg_pass1)+'\n')
+            database.close()
+            reg_pass2 = input('Confirm Password: ')
+            if reg_pass1 != reg_pass2:
+                print('Password dont Match')
+                return self.reg(SavingsAcct,intialDeposit, amount_with)
+            else:
+                account = randint(1111111111, 9999999999)
+                database = open('database.txt', 'a')
+                database.write(str(account))
+                database.close()
+                print('Your Account Has been succesfully Created ' + str(account))
+                return self.login(SavingsAcct, intialDeposit, amount_with)
+
         else:
-            account = randint(1111111111, 9999999999)
-            print('Your Account Has been succesfully Created ' + str(account))
-            return self.login(SavingsAcct, intialDeposit, amount_with)
+            print('Length of Password Not more Than Four Letters')
+        return self.reg(SavingsAcct,intialDeposit,amount_with)
 
     def login(self, intialDeposit, amount_with):
         Username= input('please Enter youur Username ')
+        database=open('database.txt','r').read()
         if Username in database:
             password = input('please Enter Your Password here: ')
             if password in database:
